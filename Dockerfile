@@ -23,3 +23,6 @@ RUN yes | ${ANDROID_HOME}/tools/bin/sdkmanager --licenses
 RUN ${ANDROID_HOME}/tools/bin/sdkmanager --update
 
 RUN while read -r package; do PACKAGES="${PACKAGES}${package} "; done < /sdk/packages.txt && ${ANDROID_HOME}/tools/bin/sdkmanager ${PACKAGES}
+
+ADD start.sh /usr/local/bin
+CMD bash -C '/usr/local/bin/start.sh';'bash'
