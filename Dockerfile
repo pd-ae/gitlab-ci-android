@@ -24,7 +24,9 @@ RUN ${ANDROID_HOME}/tools/bin/sdkmanager --update
 
 RUN while read -r package; do PACKAGES="${PACKAGES}${package} "; done < /sdk/packages.txt && ${ANDROID_HOME}/tools/bin/sdkmanager ${PACKAGES}
 
+ENV GRADLE_OPTS "-Dorg.gradle.daemon=false"
+
 COPY start.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/start.sh
 
-CMD bash -C '/usr/local/bin/start.sh';'bash'
+CMD ["/usr/local/bin/start.sh"]
